@@ -14,8 +14,6 @@
             }
             const data = await response.json();
             console.log(data);
-            console.log(data.slip.advice);
-            console.log(data.slip.id);
             numberID.textContent = data.slip.id;
 
             adviceContainer.appendChild(numberID);
