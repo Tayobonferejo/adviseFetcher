@@ -8,6 +8,9 @@ body {
     background-color: black;
     height: 100vh;
 }
+main {
+    padding: 2rem 0;
+}
 
 section {
     background-color: blue;
@@ -29,4 +32,14 @@ button {
     text-align: center;
     margin: auto;
     font-size: 24px;
+}
+
+button:hover {
+    width: 20%;
+    height: 50px;
+    text-align: center;
+    margin: auto;
+    font-size: 24px;
+    background-color: black;
+    color: whitesmoke;
 }
