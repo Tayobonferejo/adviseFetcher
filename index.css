@@ -5,16 +5,22 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
     background-color: black;
     height: 100vh;
 }
 
 section {
     background-color: blue;
+    border-radius: 2px;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+body , section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
 button {
