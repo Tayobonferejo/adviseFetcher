@@ -2,9 +2,13 @@
     window.addEventListener("load",   function(){
 
         const button = document.getElementById("button");
+        const trigger= document.getElementById("mainSection");
         const adviceContainer = document.getElementById("advice-container");
         const numberID = document.createElement("p");
         const adviceText = document.createElement("h1");
+        adviceContainer.appendChild(numberID);
+        adviceContainer.appendChild(adviceText);
+
 
         async function fetchDataFromAPI() {
         try {
@@ -14,20 +18,36 @@
             }
             const data = await response.json();
             console.log(data);
-            numberID.textContent = data.slip.id;
+            numberID.textContent = `ADVICE #${data.slip.id}`;
 
-            adviceContainer.appendChild(numberID);
-            adviceContainer.appendChild(adviceText);
+            adviceText.textContent = `"${data.slip.
+            advice}"`;
 
-            adviceText.textContent = data.slip.advice
+            // Fade back in after updating text
+            trigger.classList.remove("is-active");
+
         }
         catch (error) {
             console.error("Error fetching data:", error);
-            adviceContainer.innerHTML = "Failed to fetch advice. Please try again.";
+            adviceText.textContent = "Failed to fetch advice. Please try again.";
+            trigger.classList.remove("is-active");
         }
     }
 
     fetchDataFromAPI();
-     button.addEventListener("click", fetchDataFromAPI);
+
+     button.addEventListener("click", function(){
+        trigger.classList.add("is-active");
+     });
+
+      // When transition (fade-out) ends, fetch new advice
+        trigger.addEventListener("transitionend", function() {
+                if (trigger.classList.contains("is-active")) {
+                fetchDataFromAPI();
+                }
+            });
+
 });
+
+
 
